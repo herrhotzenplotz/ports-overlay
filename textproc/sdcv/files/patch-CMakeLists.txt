@@ -1,0 +1,32 @@
+--- CMakeLists.txt.orig	2022-06-24 18:33:33 UTC
++++ CMakeLists.txt
+@@ -9,17 +9,15 @@ set(CMAKE_CXX_EXTENSIONS False)
+ 
+ include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/compiler.cmake")
+ 
++find_package(PkgConfig REQUIRED)
++
+ set(ZLIB_FIND_REQUIRED True)
+ include(FindZLIB)
+ 
+ set(GLIB2_REQ "'glib-2.0 >= 2.36'")
+ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+-include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindGLIB2.cmake")
+ 
+-if (NOT GLIB2_FOUND)
+-	message(FATAL_ERROR "sdcv require ${GLIB2_REQ}, "
+-		"make sure that you install it")
+-endif()
++pkg_check_modules(GLIB2 REQUIRED glib-2.0)
+ 
+ set(WITH_READLINE True CACHE BOOL "Use readline library")
+ 
+@@ -105,7 +103,7 @@ add_definitions(-DVERSION="${sdcv_VERSION}" -DHAVE_CON
+ add_executable(sdcv ${sdcv_SRCS})
+ 
+ target_link_libraries(sdcv
+-  ${GLIB2_LIBRARIES}
++  ${GLIB2_LDFLAGS}
+   ${ZLIB_LIBRARIES}
+   ${READLINE_LIBRARY}
+ )
