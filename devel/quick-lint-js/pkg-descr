@@ -1,0 +1,6 @@
+Linter that finds bugs in JavaScript programs. 200× faster than
+ESLint, quick-lint-js gives you instant feedback as you code. Find
+bugs in your JavaScript before your finger leaves the keyboard. Lint
+any JavaScript file with no configuration.
+
+WWW: https://quick-lint-js.com/
