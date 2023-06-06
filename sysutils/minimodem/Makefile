@@ -12,12 +12,13 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	kamalmostafa
 GH_TAGNAME=	${PORTNAME}-${DISTVERSION}
 
-USES=		autoreconf
+USES=		autoreconf pkgconfig:build
 
 RUN_DEPENDS=	pulseaudio>0:audio/pulseaudio
 LIB_DEPENDS=	libfftw3f.so:math/fftw3-float \
-		libasound.so:audio/alsa-lib \
-		libsndfile.so:audio/libsndfile
+		libpulse-simple.so:audio/pulseaudio
+
+CONFIGURE_ARGS=	--without-alsa --without-sndfile
 
 
 .include <bsd.port.mk>
