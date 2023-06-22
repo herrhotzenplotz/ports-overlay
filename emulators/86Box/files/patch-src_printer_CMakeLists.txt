@@ -1,0 +1,12 @@
+--- src/printer/CMakeLists.txt.orig	2022-11-25 19:33:04 UTC
++++ src/printer/CMakeLists.txt
+@@ -13,4 +13,9 @@
+ #          Copyright 2020,2021 David Hrdlička.
+ #
+ 
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(freetype2 REQUIRED freetype2)
++
+ add_library(print OBJECT png.c prt_cpmap.c prt_escp.c prt_text.c prt_ps.c)
++target_include_directories(print PUBLIC ${freetype2_INCLUDE_DIRS})
++target_link_libraries(print PUBLIC ${freetype2_LIBRARIES})
