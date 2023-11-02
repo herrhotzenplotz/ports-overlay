@@ -1,27 +1,22 @@
---- CMakeLists.txt.orig	2023-04-13 23:36:53 UTC
+--- CMakeLists.txt.orig	2023-11-02 01:52:05 UTC
 +++ CMakeLists.txt
-@@ -72,7 +72,7 @@ endif ()
- 
- set(
-   QUICK_LINT_JS_INSTALL_EMACS_DIR
--  "${CMAKE_INSTALL_DATAROOTDIR}/emacs/site-elisp"
-+  "${CMAKE_INSTALL_DATAROOTDIR}/emacs/site-lisp"
-   CACHE
-   STRING
-   "Install Emacs Lisp files into this directory relative to CMAKE_INSTALL_PREFIX"
-@@ -179,12 +179,16 @@ endif ()
+@@ -201,12 +201,16 @@ endif ()
  add_subdirectory(dist)
  add_subdirectory(docs)
  add_subdirectory(fuzz)
+-add_subdirectory(plugin/vim)
+-add_subdirectory(plugin/emacs)
+-add_subdirectory(plugin/vscode)
 +if (QUICK_LINT_JS_ENABLE_EDITORS)
- add_subdirectory(plugin/vim)
- add_subdirectory(plugin/emacs)
- add_subdirectory(plugin/vscode)
-+endif()
++  add_subdirectory(plugin/vim)
++  add_subdirectory(plugin/emacs)
++  add_subdirectory(plugin/vscode)
++endif ()
  add_subdirectory(src)
  add_subdirectory(website/wasm)
+-add_subdirectory(completions)
 +if (QUICK_LINT_JS_ENABLE_COMPLETIONS)
- add_subdirectory(completions)
++  add_subdirectory(completions)
 +endif ()
  include(CTest)
  if (BUILD_TESTING)
