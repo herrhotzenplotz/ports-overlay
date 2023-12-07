@@ -4,6 +4,7 @@ CATEGORIES=	devel
 
 MAINTAINER=	nsonack@outlook.com
 COMMENT=	Fast JavaScript Linter
+WWW=		https://quick-lint-js.com/
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
@@ -17,13 +18,11 @@ OPTIONS_DEFAULT=	EDITOR
 EDITOR_DESC=		Install Emacs, Vim and NVim plugins
 COMPLETION_DESC=	Install bash, fish and zsh completions
 
-CMAKE_OFF=	BUILD_TESTING
-
 PLIST_FILES=		bin/quick-lint-js \
+			share/icons/hicolor/scalable/apps/com.quick_lint.quick_lint_js.svg \
 			share/man/man1/quick-lint-js.1.gz \
 			share/man/man5/quick-lint-js.config.5.gz \
-			share/man/man8/quick-lint-js-lsp.8.gz \
-			share/icons/hicolor/scalable/apps/com.quick_lint.quick_lint_js.svg
+			share/man/man8/quick-lint-js-lsp.8.gz
 EDITOR_CMAKE_BOOL=	QUICK_LINT_JS_ENABLE_EDITORS \
 			QUICK_LINT_JS_ENABLE_VSCODE
 EDITOR_PLIST_FILES=	share/emacs/site-lisp/eglot-quicklintjs.el \
@@ -44,6 +43,8 @@ COMPLETION_PLIST_FILES=	share/bash-completion/completions/quick-lint-js.bash \
 			share/fish/vendor_completions.d/quick-lint-js.fish \
 			share/zsh/site-functions/_quick-lint-js \
 			share/zsh/vendor-completions/_quick-lint-js
+
+TEST_TARGET=	test
 
 post-install:
 	${RM} ${STAGEDIR}${LOCALBASE}/share/metainfo/com.quick_lint.quick_lint_js.metainfo.xml
