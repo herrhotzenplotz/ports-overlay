@@ -1,0 +1,11 @@
+include/E57Format/E57Format.h
+include/E57Format/E57Version.h
+include/E57Format/E57Exception.h
+include/E57Format/E57SimpleWriter.h
+include/E57Format/E57SimpleData.h
+include/E57Format/E57SimpleReader.h
+include/E57Format/E57Export.h
+lib/libE57Format.so
+lib/cmake/E57Format/e57format-config.cmake
+lib/cmake/E57Format/E57Format-export.cmake
+lib/cmake/E57Format/E57Format-export-release.cmake
