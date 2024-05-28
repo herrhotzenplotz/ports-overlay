@@ -1,29 +1,31 @@
 PORTNAME=	contour
-COMMENT=	Modern C++ Terminal Emulator
-DISTVERSION=	0.4.3.6442
 DISTVERSIONPREFIX=	v
+DISTVERSION=	0.4.3.6442
 CATEGORIES=	x11
-MAINTAINER=	nsonack@herrhotzenplotz.de
 
-USES=		cmake compiler:c++20-lang desktop-file-utils gl pkgconfig qt:6
-USE_GITHUB=	yes
-USE_XORG=	xcb
-USE_QT=		5compat base declarative multimedia
-USE_GL=		opengl
+MAINTAINER=	nsonack@herrhotzenplotz.de
+COMMENT=	Modern C++ Terminal Emulator
+WWW=		https://contour-terminal.org/
 
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
-
-BUILD_DEPENDS=	${LOCALBASE}/include/fmt/format.h:devel/libfmt \
-		${LOCALBASE}/include/gsl/gsl:devel/microsoft-gsl \
-		${LOCALBASE}/include/range/v3/range.hpp:devel/range-v3 \
-		${LOCALBASE}/share/unicode/ucd/UnicodeData.txt:textproc/UCD
 
 LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2 \
 		libharfbuzz.so:print/harfbuzz \
 		libssh2.so:security/libssh2 \
 		libyaml-cpp.so:devel/yaml-cpp
+
+BUILD_DEPENDS=	${LOCALBASE}/include/fmt/format.h:devel/libfmt \
+		${LOCALBASE}/include/gsl/gsl:devel/microsoft-gsl \
+		${LOCALBASE}/include/range/v3/range.hpp:devel/range-v3 \
+		${LOCALBASE}/share/unicode/ucd/UnicodeData.txt:textproc/UCD
+
+USES=		cmake compiler:c++20-lang desktop-file-utils gl pkgconfig qt:6
+USE_GITHUB=	yes
+USE_XORG=	xcb
+USE_QT=		5compat base declarative multimedia
+USE_GL=		opengl
 
 GH_ACCOUNT=	contour-terminal
 GH_PROJECT=	libunicode:libunicode boxed-cpp:boxed
