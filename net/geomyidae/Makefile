@@ -11,5 +11,6 @@ LIB_DEPENDS=		libtls.so:security/libressl
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${LOCALBASE}/bin/geomyidae
 	${CP} files/geomyidae_rc_script ${STAGEDIR}${LOCALBASE}/etc/rc.d/${PORTNAME}
+	${CHMOD} 755 ${STAGEDIR}${LOCALBASE}/etc/rc.d/${PORTNAME}
 
 .include <bsd.port.mk>
