@@ -1,0 +1,89 @@
+#!/bin/sh
+
+# PROVIDE: geomyidae
+# REQUIRE: NETWORKING SERVERS DAEMON
+# BEFORE:  LOGIN
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf to enable this service
+#
+# geomyidae_enable (bool):             Set to NO by default.
+#                                      Set to YES to enable geomyidae
+# geomyidae_flags (string):            Additional command line options to
+#                                      pass to geomyidae(8).
+# geomyidae_user (string):             Set to the user to run geomyidae as
+#                                      Default is "geomyidae"
+# geomyidae_group (string):            Set to the group to run geomyidae as
+#                                      Default is "geomyidae"
+# geomyidae_htdocs (string):           Directory to server files from
+#                                      Default is "/var/gopher"
+# geomyidae_logfile (string):          File to use as a logfile
+#                                      Default is "/var/log/gopherlog"
+# geomyidae_bindhost (string):         IP Address to bind to
+#                                      Default is all addresses
+# geomyidae_port (int):                Port to listen on
+#                                      Default is 70
+# geomyidae_sport (int):               Port to display within base directory
+#                                      Default is 70
+# geomyidae_keyfile (string):          Path to private key in case TLS support is desired
+#                                      Default is empty
+# geomyidae_certfile (string):         Path to public key in case TLS support is desired
+#                                      Default is empty
+#
+# NOTE: You need to install geomyidae setuid root:wheel for this
+#       to work when listening on priviledged ports.
+#
+# Create users and group accordingly, e.g.:
+#
+#   # pw groupadd geomyidae -g 542
+#   # pw useradd geomyidae -g geomyidae -u 542 -s /usr/sbin/nologin -d /nonexistent
+#
+# Create logfile, pidfile and htdocs:
+#
+#    # mkdir /var/gopher
+#    # touch /var/run/geomyidae.pid
+#    # touch /var/log/gopherlog
+#    # chown geomyidae:geomyidae /var/gopher /var/run/geomyidae.pid /var/log/gopherlog
+
+. /etc/rc.subr
+
+name=geomyidae
+rcvar=geomyidae_enable
+
+load_rc_config $name
+
+: ${geomyidae_enable:="NO"}
+: ${geomyidae_user:="geomyidae"}
+: ${geomyidae_group:="geomyidae"}
+: ${geomyidae_flags:=""}
+: ${geomyidae_htdocs:="/var/gopher"}
+: ${geomyidae_logfile:="/var/log/gopherlog"}
+: ${geomyidae_bindhost:=""}
+: ${geomyidae_host:="localhost"}
+: ${geomyidae_port:="70"}
+: ${geomyidae_sport:="70"}
+: ${geomyidae_command:="/usr/local/bin/geomyidae"}
+: ${geomyidae_certfile:=""}
+: ${geomyidae_keyfile:=""}
+
+pidfile=/var/run/geomyidae.pid
+procname="${geomyidae_command}"
+command="/usr/sbin/daemon"
+command_args="-S -T geomyidae -m 3 -f -p ${pidfile} ${geomyidae_command} -d -l ${geomyidae_logfile} \
+	-b ${geomyidae_htdocs} -p ${geomyidae_port} -o ${geomyidae_sport} \
+	-u ${geomyidae_user} -g ${geomyidae_group} -h ${geomyidae_host}"
+
+# Append bindhost if set
+[ ! -z "${geomyidae_bindhost}" ] && command_args="${command_args} -i ${geomyidae_bindhost}"
+
+# TLS setup
+[ ! -z "${geomyidae_keyfile}" -a ! -z "${geomyidae_certfile}" ] && \
+	command_args="${command_args} -t ${geomyidae_keyfile} ${geomyidae_certfile}"
+
+# Lastly append flags by user
+command_args="${command_args} ${geomyidae_flags}"
+
+required_files="${pidfile} ${geomyidae_logfile}"
+required_dirs="${geomyidae_htdocs}"
+
+run_rc_command "$1"

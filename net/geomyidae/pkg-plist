@@ -1,0 +1,3 @@
+bin/geomyidae
+etc/rc.d/geomyidae
+share/man/man8/geomyidae.8.gz
