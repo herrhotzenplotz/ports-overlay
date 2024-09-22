@@ -1,7 +1,7 @@
-TIMESTAMP = 1719668441
-SHA256 (contour-terminal-contour-v0.4.3.6442-4c71d0cce2e63a23859a1cf7b389dc9e872384a1_GH0.tar.gz) = b44c7fa87bd7b723fbb1332155ada8f562416a69de44f9851c2c641094b407d4
-SIZE (contour-terminal-contour-v0.4.3.6442-4c71d0cce2e63a23859a1cf7b389dc9e872384a1_GH0.tar.gz) = 10295562
-SHA256 (contour-terminal-libunicode-23d7b30166a914b10526bb8fe7a469a9610c07dc_GH0.tar.gz) = aa1f895412e19ba28370378347755a22208d93ec84e7860d99afec3a15b21895
-SIZE (contour-terminal-libunicode-23d7b30166a914b10526bb8fe7a469a9610c07dc_GH0.tar.gz) = 89732
-SHA256 (contour-terminal-boxed-cpp-ba8084ff3fe8bdb0d1b4e5fb21ce85e133d35bd7_GH0.tar.gz) = a06893d36841299a24137f314e687ab4fdb9fe5fd4e35e7189f297d263c1d395
-SIZE (contour-terminal-boxed-cpp-ba8084ff3fe8bdb0d1b4e5fb21ce85e133d35bd7_GH0.tar.gz) = 14068
+TIMESTAMP = 1727008502
+SHA256 (contour-terminal-contour-v0.5.0.7168_GH0.tar.gz) = e7e8cde0ab0ada90e20d5bc279a415d8288eb8d9c96ca5c8b49ce80397cfa428
+SIZE (contour-terminal-contour-v0.5.0.7168_GH0.tar.gz) = 10306241
+SHA256 (contour-terminal-libunicode-28aacf5191450775f1f336aba1d6b65673b0ba9f_GH0.tar.gz) = 9ffe9c8d7caf1d9b164d851af364ff33573c429bd0bc797dbacd04f81a087019
+SIZE (contour-terminal-libunicode-28aacf5191450775f1f336aba1d6b65673b0ba9f_GH0.tar.gz) = 92783
+SHA256 (contour-terminal-boxed-cpp-v1.4.2_GH0.tar.gz) = 37366d1cdb4190a1fdc797583a5fcc2f4bb4a4af125a3c20ebd8c3a0f9db9b00
+SIZE (contour-terminal-boxed-cpp-v1.4.2_GH0.tar.gz) = 14189

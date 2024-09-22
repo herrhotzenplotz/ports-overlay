@@ -1,7 +1,6 @@
 PORTNAME=	contour
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.4.3.6442
-PORTREVISION=	2
+DISTVERSION=	0.5.0.7168
 CATEGORIES=	x11
 
 MAINTAINER=	nsonack@herrhotzenplotz.de
@@ -30,9 +29,8 @@ USE_GL=		opengl
 
 GH_ACCOUNT=	contour-terminal
 GH_PROJECT=	libunicode:libunicode boxed-cpp:boxed
-GH_TAGNAME=	23d7b30166a914b10526bb8fe7a469a9610c07dc:libunicode \
-		ba8084ff3fe8bdb0d1b4e5fb21ce85e133d35bd7:boxed \
-		4c71d0cce2e63a23859a1cf7b389dc9e872384a1
+GH_TAGNAME=	28aacf5191450775f1f336aba1d6b65673b0ba9f:libunicode \
+		v1.4.2:boxed
 GH_SUBDIR=	_deps/sources/libunicode:libunicode \
 		_deps/sources/boxed_cpp:boxed
 
