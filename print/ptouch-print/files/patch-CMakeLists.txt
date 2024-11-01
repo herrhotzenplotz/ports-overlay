@@ -1,21 +1,11 @@
---- CMakeLists.txt.orig	2021-10-11 08:18:49 UTC
+--- CMakeLists.txt.orig	2024-10-30 06:35:41 UTC
 +++ CMakeLists.txt
-@@ -11,10 +11,18 @@ find_package(Intl REQUIRED)
- find_package(PkgConfig REQUIRED)
- find_package(Intl REQUIRED)
+@@ -5,7 +5,7 @@ include(GNUInstallDirs)
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
  
-+include(GNUInstallDirs)
-+
- pkg_check_modules(LIBUSB REQUIRED libusb-1.0)
+ include(GNUInstallDirs)
+-set(CMAKE_INSTALL_PREFIX /usr)
++# set(CMAKE_INSTALL_PREFIX /usr)
+ set(CMAKE_C_STANDARD 11)
  
- # Configure project executable
- add_executable(ptouch-print)
-+
-+install(TARGETS ptouch-print
-+        DESTINATION "${CMAKE_INSTALL_BINDIR}")
-+
-+install(FILES ptouch-print.1
-+        DESTINATION "${CMAKE_INSTALL_MANDIR}/man1")
- 
- target_sources(ptouch-print PUBLIC
- 	version.h
+ # Configure required dependencies

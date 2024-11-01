@@ -1,5 +1,5 @@
 PORTNAME=		ptouch-print
-DISTVERSION=		1.5
+DISTVERSION=		1.6
 DISTVERSIONPREFIX=	v
 CATEGORIES=		print
 
@@ -19,6 +19,8 @@ LIB_DEPENDS +=		libgd.so:graphics/gd \
 
 PLIST_FILES=		bin/ptouch-print \
 			share/man/man1/ptouch-print.1.gz
+
+CMAKE_ARGS=		-DGIT_TAG=${DISTVERSION}
 
 CLONE_DIR=		${WRKDIR}/git-clone
 do-fetch:
