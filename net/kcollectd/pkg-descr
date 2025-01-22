@@ -1,0 +1,4 @@
+kcollectd is a graphical front-end to collectd, a data collection
+service that monitors, by polling or pushed updates, system
+information, such as temperature or free RAM. kcollectd provides a
+graphical display of these collected statistics.

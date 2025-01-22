@@ -1,0 +1,33 @@
+--- kcollectd/CMakeLists.txt.orig	2024-12-13 14:54:01 UTC
++++ kcollectd/CMakeLists.txt
+@@ -37,22 +37,20 @@ add_executable(kcollectd
+   misc.cc
+   rrd_interface.cc
+   timeaxis.cc)
+-set(rrd_LIBRARIES rrd)
+ 
+ kde_target_enable_exceptions(kcollectd PRIVATE)
+ 
+ target_link_libraries(kcollectd
+ PUBLIC
+-  KF6::CoreAddons
+-  KF6::XmlGui
+-  KF6::WidgetsAddons
+-  KF6::IconThemes
+-  KF6::I18n
+-  Qt6::Core
+-  Qt6::Widgets
+-  Qt6::Gui
++  KF5::XmlGui
++  KF5::WidgetsAddons
++  KF5::IconThemes
++  KF5::I18n
++  Qt5::Core
++  Qt5::Widgets
++  Qt5::Gui
+   ${Boost_LIBRARIES}
+-  ${rrd_LIBRARIES}
++  ${rrd_LDFLAGS}
+ )
+ install(TARGETS kcollectd  ${INSTALL_TARGETS_DEFAULT_ARGS})
+ 

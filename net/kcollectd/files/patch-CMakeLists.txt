@@ -1,0 +1,26 @@
+--- CMakeLists.txt.orig	2024-12-13 14:54:01 UTC
++++ CMakeLists.txt
+@@ -18,12 +18,11 @@ include(ECMInstallIcons)
+ include(FeatureSummary)
+ include(ECMInstallIcons)
+ 
+-find_package(Qt6 6.6.0 CONFIG REQUIRED Core Widgets Gui)
++find_package(Qt5 5.7.0 CONFIG REQUIRED Core Widgets Gui)
+ 
+ # Load the frameworks we need
+-find_package(KF6 REQUIRED COMPONENTS
++find_package(KF5 REQUIRED COMPONENTS
+   Config
+-  CoreAddons
+   DocTools
+   GuiAddons
+   KIO
+@@ -37,6 +36,8 @@ find_package(Boost COMPONENTS filesystem system)
+   cmake_policy(SET CMP0167 NEW)
+ endif()
+ find_package(Boost COMPONENTS filesystem system)
++
++pkg_check_modules(rrd REQUIRED librrd)
+ 
+ add_definitions(-Wall -g)
+ 
