@@ -1,6 +1,6 @@
 PORTNAME=	contour
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.5.0.7168
+DISTVERSION=	0.6.1.7494
 CATEGORIES=	x11
 
 MAINTAINER=	nsonack@herrhotzenplotz.de
@@ -19,7 +19,7 @@ LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 BUILD_DEPENDS=	${LOCALBASE}/include/fmt/format.h:devel/libfmt \
 		${LOCALBASE}/include/gsl/gsl:devel/microsoft-gsl \
 		${LOCALBASE}/include/range/v3/range.hpp:devel/range-v3 \
-		${LOCALBASE}/share/unicode/ucd/UnicodeData.txt:textproc/UCD
+		UCD>=16.0:textproc/UCD
 
 USES=		cmake compiler:c++20-lang desktop-file-utils gl pkgconfig qt:6
 USE_GITHUB=	yes
@@ -28,11 +28,13 @@ USE_QT=		5compat base declarative multimedia
 USE_GL=		opengl
 
 GH_ACCOUNT=	contour-terminal
-GH_PROJECT=	libunicode:libunicode boxed-cpp:boxed
-GH_TAGNAME=	28aacf5191450775f1f336aba1d6b65673b0ba9f:libunicode \
-		v1.4.2:boxed
+GH_PROJECT=	libunicode:libunicode boxed-cpp:boxed reflection-cpp:reflection
+GH_TAGNAME=	817cb5900acdf6f60e2344a4c8f1f39262878a4b:libunicode \
+		v1.4.3:boxed \
+		v0.2.0:reflection
 GH_SUBDIR=	_deps/sources/libunicode:libunicode \
-		_deps/sources/boxed_cpp:boxed
+		_deps/sources/boxed_cpp:boxed \
+		_deps/sources/reflection_cpp:reflection
 
 CMAKE_ARGS=	-DLIBUNICODE_UCD_DIR=${LOCALBASE}/share/unicode/ucd
 
@@ -44,6 +46,9 @@ post-patch:
 	@echo "endmacro()" >> ${WRKSRC}/_deps/sources/CMakeLists.txt
 	@echo "macro(ContourThirdParties_Embed_boxed_cpp)" >> ${WRKSRC}/_deps/sources/CMakeLists.txt
 	@echo "    add_subdirectory(\$${ContourThirdParties_SRCDIR}/boxed_cpp EXCLUDE_FROM_ALL)" >> ${WRKSRC}/_deps/sources/CMakeLists.txt
+	@echo "endmacro()" >> ${WRKSRC}/_deps/sources/CMakeLists.txt
+	@echo "macro(ContourThirdParties_Embed_reflection_cpp)" >> ${WRKSRC}/_deps/sources/CMakeLists.txt
+	@echo "    add_subdirectory(\$${ContourThirdParties_SRCDIR}/reflection_cpp EXCLUDE_FROM_ALL)" >> ${WRKSRC}/_deps/sources/CMakeLists.txt
 	@echo "endmacro()" >> ${WRKSRC}/_deps/sources/CMakeLists.txt
 
 post-install:
